@@ -12,8 +12,9 @@ export default function HomePage(){
             <img src={Banner} alt="" width="100%" / >
         </div>
         <div style={{ marginTop:"5%", marginLeft:"10%", fontSize:"20px"}} className='source-serif-4-font'>
-        <p>I'm Sujith a software developer and blogger.</p>
-        <p>I tries to write about things that I love and also hate.</p>
+        <p>I'm Sujith a software developer and a blogger.</p>
+        <p>I write about things that I love and hate.</p>
+        <p>Have a look around my blogs and let me know what ou think.</p>
         <p>Feel free to write to me in the feedback section.</p>
         <p><b>Happy reading!</b></p>
         <br /><br /><br />

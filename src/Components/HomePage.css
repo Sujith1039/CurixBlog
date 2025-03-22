@@ -1,0 +1,44 @@
+
+.text-author{
+    position: absolute;
+    top: 57%;
+    left: 80%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
+}
+
+.quintessential-regular {
+    font-family: "Quintessential", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+  }
+  
+  .pacifico-regular {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.button-area{
+    position: absolute;
+    top: 68%;
+    left: 10%
+}
+
+.custom-btn {
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.source-serif-4-font {
+    font-family: "Source Serif 4", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }

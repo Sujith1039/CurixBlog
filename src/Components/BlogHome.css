@@ -1,0 +1,37 @@
+#main-div {
+    margin: 5%;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+
+}
+
+.card-width {
+    width: 20rem;
+}
+
+.view {
+    text-align: end;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.title {
+    color: black;
+    font-size: 20px;
+    line-height: 50px;
+   
+}
+
+.gabarito-font {
+    font-family: "Gabarito", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .card-img-style {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; 
+  }

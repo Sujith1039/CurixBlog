@@ -1,0 +1,29 @@
+.blogPage{
+    margin-top: 3%;
+}
+
+#amaranth-bold {
+    font-family: "Amaranth", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .amaranth-regular {
+    font-family: "Amaranth", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .andada-pro-font {
+    font-family: "Andada Pro", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .source-serif-4-font {
+    font-family: "Source Serif 4", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }

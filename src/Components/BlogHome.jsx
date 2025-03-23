@@ -1,16 +1,45 @@
 import './BlogHome.css';
 import reactLogo from '../assets/react.svg'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {blogs} from '../Blogs/BlogIndex';
 import { blogContent } from './BlogContent';
 import { Link } from 'react-router-dom';
+import {db} from '../FbConfig/Firebase';
+import {getDocs, collection} from 'firebase/firestore'
+
 
 export default function BlogHome(){
     const [viewName, setBlogView] =  useState('Cardview');
+    const [blogList, setBlogList] = useState([]);
 
     function handleClick(view){
         setBlogView(view)
     }
+
+    const blogsData = collection(db, "blogs")
+
+    async function getBlogsData() {
+        try{
+            const data = await getDocs(blogsData);
+            const filteredData = data.docs.map((doc)=>({
+                ...doc.data(),
+                id: doc.id
+            }));
+            setBlogList(filteredData)
+            console.log(filteredData);
+            console.log("Running");
+
+        }
+        catch(err){
+            console.log(err);
+            
+        }
+        
+    };
+
+    useEffect(()=>{
+        getBlogsData();
+    },[]);
 
     return(
     <div>
@@ -21,69 +50,38 @@ export default function BlogHome(){
         {viewName==="Titleview"? (
         <div>
             <ol class="margin">
-            {Object.entries(blogContent).map(([index,blog])=>(
+            {blogList.map((blog)=>(
 
             
-                <li class=" gabarito-font" key={index}>
-                    <Link class="title"to={`/blogpage/${index}`}>{blog.Title}</Link>
+                <li class=" gabarito-font" key={blog.id}>
+                    <Link class="title"to={`/blogpage/${blog.id}`}>{blog.Title}</Link>
                     </li>
             
             ))}
             </ol>
         </div>): (
            
-            <div class="container">
-                <div class="row">
-                    {Object.entries(blogContent).map(([index,blog])=>(
-                        <div className='col-md-4 mb-4'>
-                    <div className='card card-width'>
-                    <Link class="title"to={`/blogpage/${index}`}>
-                        <img class="card-img-top card-img-style" src={blog.image}  alt="Card image cap"/>
-                        <div className="card-body">
-                        <h5 className="card-title"> {blog.Title}</h5>
-                     </div></Link>
-                    </div></div>
-                    ))}
-                    {/* <div class="col">
-                    <div class="card card-width">
-                    <img class="card-img-top" src={reactLogo} alt="Card image cap"/>
-                            <div class="card-body">
-                    <p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    </div>
-                    </div>
-                    <div class="col">
-                    <div class="card card-width">
-                    <img class="card-img-top" src={reactLogo} alt="Card image cap"/>
-                    <div class="card-body">
-                    <p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    </div>
-                    </div>
-                    <div class="col">
-                    <div class="card card-width">
-                    <img class="card-img-top" src={reactLogo} alt="Card image cap"/>
-                    <div class="card-body">
-                    <p class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    </div>
-                    </div> */}
-                </div>
+           <div className="container-fluid">
+  <div className="row">
+    {blogList.map((blog) => (
+      <div className="col-12 col-sm-6 col-md-4 mb-4" key={blog.id}>
+        <div className="card h-100">
+          <Link className="title" to={`/blogpage/${blog.id}`}>
+            <img className="card-img-top img-fluid" src={blog.Image} alt="Blog Thumbnail" />
+            <div className="card-body">
+              <h5 className="card-title">{blog.Title}</h5>
             </div>
-        
+          </Link>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
     )}
     </div>
-        
-
-        
     </div>
     )
 }
 
 
-{/* {Object.values(blogs).map((blog)=>(<div class="card card-width">
-            <img class="card-img-top" src={blog.img} alt="Card image cap"/>
-            <div class="card-body">
-            <p class="card-title">{blog.title}</p>
-            </div>
-            </div>))} */}
